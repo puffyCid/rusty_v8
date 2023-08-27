@@ -1,3 +1,29 @@
+# PLEASE READ
+
+This an experimental branch to compile V8 and Rust bindings for
+[artemis](https://github.com/puffyCid/artemis). It was mainly created to see how
+much work it would take to support freebsd as a platform for `artemis`.
+
+Its alot of work...\
+Steps to build:
+
+0. Setup a FreeBSD VM and install all necessary dependencies to compile. Can be
+   found in deno [ports](https://www.freshports.org/www/deno)
+1. Clone this repo. Ensure you are on the `freebsd-support` branch
+2. Clone submodules. `v8, build, buildtools, abseil-cpp, and zlib` have been
+   updated with necessary FreeBSD patches. They should all be on a FreeBSD
+   branch
+3. set necessary env variables. Ex in `bash`: `export GN=/usr/local/bin/gn`,
+   `export NINJA=/usr/local/bin/ninja`, `export V8_FROM_SOURCE=1`,
+   `export CLANG_BASE_PATH=/usr`
+4. Clone [artemis](https://github.com/puffyCid/artemis). Switch to FreeBSD
+   branch
+5. Enable the V8 FreeBSD patch in `Cargo.toml`
+6. Build `artemis` with `cargo build`
+
+This would have been impossible without the work done by FreeBSD
+[ports](https://www.freshports.org/www/deno) team
+
 # Rusty V8 Binding
 
 V8 Version: 11.7.439.6
